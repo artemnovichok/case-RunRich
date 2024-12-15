@@ -22973,6 +22973,12 @@ MonoBehaviour:
   click: {fileID: 8300000, guid: dc8c2f79f00d31a469d7cffdf94ebea2, type: 3}
   fail: {fileID: 8300000, guid: fed58db87ff506d42857c1a79b1fb8d4, type: 3}
   win: {fileID: 8300000, guid: c3a510c72283d4b4db8509855c33e217, type: 3}
+  footsteps:
+  - {fileID: 8300000, guid: ffebe844f7bf642428e9aee41bbf5a11, type: 3}
+  - {fileID: 8300000, guid: 1ba36fcfa422bab42ac4cd3d43f429e1, type: 3}
+  - {fileID: 8300000, guid: e5d6d6e032771a94a9e951d0688568c2, type: 3}
+  - {fileID: 8300000, guid: ccfd46074278c1e408f9872fbed7b99e, type: 3}
+  - {fileID: 8300000, guid: c2db43aace495784c8af197dfc4f23cc, type: 3}
 --- !u!1 &1652760213
 GameObject:
   m_ObjectHideFlags: 0
