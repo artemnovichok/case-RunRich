@@ -69,6 +69,16 @@ namespace Player
             _plusAnim.SetTrigger(ResetTrigger);
         }
 
+        public void ScaleMoney(int value)
+        {
+            _money *= value;
+            PlayerAudio.Instance.CollectCoins();
+            OnMoneyUpdate();
+            plusMoney.text = $"x{value}";
+            _lastPlusTime = Time.time;
+            _plusAnim.SetTrigger(ResetTrigger);
+        }
+
         public void TakeMoney(int value)
         {
             _money -= value;

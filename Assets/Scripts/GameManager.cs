@@ -31,7 +31,7 @@ public class GameManager: MonoBehaviour
         tutorial.SetActive(false);
     }
 
-    public void Win()
+    public void Win() // победа
     {
         winScreen.SetActive(true);
         GameIsOn = false;
