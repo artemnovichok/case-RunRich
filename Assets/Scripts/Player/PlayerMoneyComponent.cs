@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace Player
 {
+    [RequireComponent(typeof(ParticleController))]
     public class PlayerMoneyComponent: MonoBehaviour
     {
         [SerializeField] private int initialMoney = 40;
@@ -24,6 +25,7 @@ namespace Player
         private int _totalMoney;
         private PlayerStatus _status;
         private int _moneyForMaxStatus;
+        private ParticleController _partController;
 
         private int _accumulatedPlusMoney;
         private float _lastPlusTime;
@@ -35,6 +37,7 @@ namespace Player
 
         private void Start()
         {
+            _partController = gameObject.GetComponent<ParticleController>();
             statusRequirements.Sort((a, b) => Math.Sign(a.money - b.money));
             _moneyForMaxStatus = statusRequirements[^1].money;
             _plusAnim = plusMoney.transform.parent.GetComponent<Animator>();
@@ -56,6 +59,7 @@ namespace Player
         public void AddMoney(int value)
         {
             _money += value;
+            _partController.PlayParticles(0);
             PlayerAudio.Instance.CollectCoins();
             OnMoneyUpdate();
 
@@ -82,13 +86,14 @@ namespace Player
         public void TakeMoney(int value)
         {
             _money -= value;
+            _partController.PlayParticles(1);
+            PlayerAudio.Instance.LoseCoins();
             if (_money <= 0)
             {
                 _money = 0;
                 GameManager.Instance.Fail();
             }
             
-            PlayerAudio.Instance.LoseCoins();
             OnMoneyUpdate();
 
             if (Time.time - _lastMinusTime > accumulationResetTime)
